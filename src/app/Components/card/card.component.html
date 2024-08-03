@@ -1,0 +1,38 @@
+<!-- (click)="gotoDetails(item.id)" -->
+<div class="parentCard">
+  <div class="ParenImage">
+    <img [src]="item.images[0]" alt="Card" ngSrcset="100w, 200w" />
+    <!-- <img [src]="item.images[0]"  alt="Card" /> -->
+  </div>
+  <div class="contentCard">
+    <div class="parentTitleA-price">
+      <h4>{{ item.brand }}</h4>
+      <span>{{ item.price }}$</span>
+    </div>
+    <p>{{ item.title }}</p>
+
+    <div class="star-rating">
+      <ng-container *ngFor="let star of stars; let i = index">
+        <span
+          [ngClass]="{
+            filled: i < item.rating,
+            'half-filled': i < item.rating && i + 0.5 >= item.rating,
+            unfilled: i >= item.rating
+          }"
+        >
+          ★
+        </span>
+      </ng-container>
+    </div>
+
+    <!-- <span class="starsIcons">{{ item.rating }}</span> -->
+    <div class="parentBtns">
+      <button>add To Cart</button>
+      <a class="Learn" [routerLink]="['/ditals', item.id]">learn more...</a>
+    </div>
+  </div>
+
+  <span [class]="item.stock !== 0 ? 'inStock' : 'noItemStock'">
+    @if(item.stock !== 0 ){ inStock }@else { out of stock }
+  </span>
+</div>

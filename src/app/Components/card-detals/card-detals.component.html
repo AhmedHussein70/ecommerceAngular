@@ -1,0 +1,34 @@
+<div class="parentDetails">
+  <div class="detailsLeft">
+    <div class="parentSingleImage">
+      <img [src]="itemIdI.images[0]" alt="Card" />
+    </div>
+    <div class="parentImages">
+      <img *ngFor="let image of itemIdI.images" [src]="image" alt="Card" />
+    </div>
+  </div>
+  <div class="detailsRight">
+    <h3>{{ itemIdI.title }}</h3>
+    <h4>Rating: {{ itemIdI.rating }}</h4>
+
+    <div class="star-rating">
+      <ng-container *ngFor="let star of stars; let i = index">
+        <span
+          [ngClass]="{
+            filled: i < itemIdI.rating,
+            'half-filled': i < itemIdI.rating && i + 0.5 >= itemIdI.rating,
+            unfilled: i >= itemIdI.rating
+          }"
+        >
+          ★
+        </span>
+      </ng-container>
+    </div>
+
+    <p>Category: {{ itemIdI.category }}</p>
+    <p>{{ itemIdI.description }}</p>
+    <span>Brand: {{ itemIdI.brand }}</span>
+    <hr />
+    <p class="In-Stock">In Stock: {{ itemIdI.stock }}</p>
+  </div>
+</div>
