@@ -1,9 +1,9 @@
 .active {
   color: cadetblue;
-  background-color: aqua;
+  background-color: blueviolet;
   border-radius: 10px;
+  color: aliceblue;
 }
-.nav-link{
-  padding: .5rem .5rem .5rem .5rem;
+.nav-link {
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
 }
-

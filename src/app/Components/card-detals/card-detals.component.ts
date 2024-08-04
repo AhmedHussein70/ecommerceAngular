@@ -26,4 +26,6 @@ export class CardDetalsComponent {
   }
 
   ngOnInit(): void {}
+
+  
 }

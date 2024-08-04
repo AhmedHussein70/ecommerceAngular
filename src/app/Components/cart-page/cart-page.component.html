@@ -1,1 +1,20 @@
-<p>cart-page works!</p>
+<div class="cart-container">
+  <h2>Your Cart</h2>
+  <div *ngIf="cart.length === 0">
+    <p>Your cart is empty.</p>
+  </div>
+  <div *ngIf="cart.length > 0">
+    <div *ngFor="let item of cart; let i = index" class="parentCard">
+      <div class="ParenImage">
+        <img [src]="item.images[0]" ngSrcset="100w, 200w" loading="lazy" />
+      </div>
+      <div class="contentCard">
+        <div class="parentTitleA-price">
+          <h4>{{ item.brand }}</h4>
+          <span>{{ item.price }}$</span>
+        </div>
+        <p>{{ item.title }}</p>
+      </div>
+    </div>
+  </div>
+</div>

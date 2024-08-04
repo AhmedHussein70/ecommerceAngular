@@ -1,0 +1,48 @@
+.registercontainer {
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 80%;
+  height: 60vh;
+  margin-top: 5rem !important;
+  color: aliceblue;
+}
+
+.form-container {
+  width: 50%;
+  background-color: #40407a;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+.backto a {
+  text-decoration: underline;
+  color: blueviolet;
+}
+.email-phone {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
+}
+span {
+  color: rgb(0, 81, 255);
+}
+.sign-up-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.addbtn {
+  margin-top: 5px;
+  padding: 7px 20px;
+}
+.remove-add-btn {
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}

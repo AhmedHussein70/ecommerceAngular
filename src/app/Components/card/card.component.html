@@ -1,8 +1,7 @@
 <!-- (click)="gotoDetails(item.id)" -->
 <div class="parentCard">
   <div class="ParenImage">
-    <img [src]="item.images[0]" alt="Card" ngSrcset="100w, 200w" />
-    <!-- <img [src]="item.images[0]"  alt="Card" /> -->
+    <img [src]="item.images[0]" ngSrcset="100w, 200w" loading="lazy" />
   </div>
   <div class="contentCard">
     <div class="parentTitleA-price">
@@ -27,7 +26,7 @@
 
     <!-- <span class="starsIcons">{{ item.rating }}</span> -->
     <div class="parentBtns">
-      <button>add To Cart</button>
+      <button (click)="addToCart(item.id)">add To Cart</button>
       <a class="Learn" [routerLink]="['/ditals', item.id]">learn more...</a>
     </div>
   </div>

@@ -1669,7 +1669,7 @@ export class HousingService {
   getAllItems(): any[] {
     return this.allProducts;
   }
-  getItemById(id: Number): any[] | undefined {
+  getItemById(id: Number): any[]  {
     return this.allProducts.find((item) => {
       return item.id == id;
     });

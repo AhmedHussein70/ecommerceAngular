@@ -7,6 +7,8 @@ import { HomePageComponent } from './Components/home-page/home-page.component';
 import { CartPageComponent } from './Components/cart-page/cart-page.component';
 import { CardDetalsComponent } from './Components/card-detals/card-detals.component';
 import { HousingService } from './housing.service';
+import { RegisterComponent } from './Components/register/register.component';
+import { LoginComponent } from './Components/login/login.component';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +22,8 @@ import { HousingService } from './housing.service';
     CartPageComponent,
     CardDetalsComponent,
     RouterModule,
+    RegisterComponent,
+    LoginComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
@@ -28,13 +32,11 @@ export class AppComponent {
   title = 'ecommerceAngular';
   itemServes: HousingService = inject(HousingService);
   constructor() {
-    this.allProducts =this.itemServes.getAllItems();
+    this.allProducts = this.itemServes.getAllItems();
     this.setDataToLocalStorage();
   }
   setDataToLocalStorage() {
     localStorage.setItem('allProducts', JSON.stringify(this.allProducts));
   }
   allProducts: any[] = [];
-
- 
 }

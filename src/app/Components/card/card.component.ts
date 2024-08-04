@@ -1,17 +1,27 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
-import { IMAGE_CONFIG } from '@angular/common';
+import { IMAGE_CONFIG, provideImgixLoader } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterModule } from '@angular/router';
+import { HousingService } from '../../housing.service';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [CardModule, ButtonModule, CommonModule, RouterLink, RouterModule],
+  imports: [
+    CardModule,
+    ButtonModule,
+    CommonModule,
+    RouterLink,
+    RouterModule,
+    NgOptimizedImage,
+  ],
   templateUrl: './card.component.html',
-  styleUrl: './card.component.css',
+  styleUrls: ['./card.component.css'],
   providers: [
+    provideImgixLoader('https://cdn.dummyjson.com/products/images/'),
     {
       provide: IMAGE_CONFIG,
       useValue: {
@@ -22,10 +32,29 @@ import { Router, RouterLink, RouterModule } from '@angular/router';
   ],
 })
 export class CardComponent {
-  @Input() item: any;
-  constructor(private router: Router) {}
-  // gotoDetails(id: any) {
-  //   this.router.navigate(['/ditals', id]);
-  // }
+  @Input() item: any | undefined;
+
+  housingService = inject(HousingService);
+  cart: any[] = [];
+
+  constructor(private router: Router) {
+    // let item = this.housingService.getItemById(this.item.id);
+  }
+
   stars: number[] = [0, 1, 2, 3, 4];
+
+  addToCart(id: any) {
+    let item = this.housingService.getItemById(this.item.id);
+    this.cart.push(item);
+    this.setDataToLocalStorage(this.cart);
+    let arrayCart = this.cart.find((item) => {
+      return console.log(item.id == id);
+    });
+
+  }
+  setDataToLocalStorage(cart: any) {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
+  
 }
