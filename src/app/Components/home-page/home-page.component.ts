@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { CardComponent } from '../card/card.component';
 import { RouterOutlet } from '@angular/router';
 import { HousingService } from '../../housing.service';
@@ -11,21 +11,13 @@ import { HousingService } from '../../housing.service';
   styleUrl: './home-page.component.css',
 })
 export class HomePageComponent {
-  AllData: any[] = [];
-  constructor() {
-    this.getDatafromStorage();
-    console.log(this.AllData);
-  }
+  AllData: any = [];
 
-  getDatafromStorage() {
-    const data = localStorage.getItem('allProducts');
-    if (data) {
-      const parsedData = JSON.parse(data);
-      this.AllData = parsedData;
-      return this.AllData;
-    }
-    return null;
+  constructor(private housingService: HousingService) {
+    this.housingService.getDataFromAPI().subscribe((data: any) => {
+      this.AllData = data.products;
+      console.log(data.products);
+      console.log(data);
+    });
   }
-
-  
 }

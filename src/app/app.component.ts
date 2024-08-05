@@ -23,20 +23,11 @@ import { LoginComponent } from './Components/login/login.component';
     CardDetalsComponent,
     RouterModule,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'ecommerceAngular';
-  itemServes: HousingService = inject(HousingService);
-  constructor() {
-    this.allProducts = this.itemServes.getAllItems();
-    this.setDataToLocalStorage();
-  }
-  setDataToLocalStorage() {
-    localStorage.setItem('allProducts', JSON.stringify(this.allProducts));
-  }
-  allProducts: any[] = [];
 }

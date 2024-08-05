@@ -34,7 +34,7 @@ import { NgOptimizedImage } from '@angular/common';
 export class CardComponent {
   @Input() item: any | undefined;
 
-  housingService = inject(HousingService);
+  // housingService = inject(HousingService);
   cart: any[] = [];
 
   constructor(private router: Router) {
@@ -43,18 +43,13 @@ export class CardComponent {
 
   stars: number[] = [0, 1, 2, 3, 4];
 
-  addToCart(id: any) {
-    let item = this.housingService.getItemById(this.item.id);
-    this.cart.push(item);
-    this.setDataToLocalStorage(this.cart);
-    let arrayCart = this.cart.find((item) => {
-      return console.log(item.id == id);
-    });
+  // addToCart(id: any) {
+  //   let item = this.housingService.getItemById(this.item.id);
+  //   this.cart.push(item);
+  //   this.setDataToLocalStorage(this.cart);
+  //   let arrayCart = this.cart.find((item) => {
+  //     return console.log(item.id == id);
+  //   });
 
-  }
-  setDataToLocalStorage(cart: any) {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }
-
-  
+  // }
 }
